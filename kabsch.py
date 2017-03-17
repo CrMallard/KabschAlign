@@ -33,14 +33,31 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 	querLines = queryFi.readlines()
 	tempLines = templateFi.readlines()
 
-	
+	#Lists for each ATOM line from the respective input file
+	qurList = []
+	temList = []
 
+	#Iterates through the query file line by line
 	for i in range(0,len(querLines)-1):
+		#if The line contains the word ATOM indicating it is an atom coordinate line 
+		if "ATOM" in querLines[i]:
+			#if the line also contains 'CA' indicating that it is the alpha carbon
+				if "CA" in querLines[i]:
+					#Stores the line in which the above conditions are met into the qurList
+					qurList.append(querLines[i])
 		print(querLines[i])
+
+	#Iterates through the template file line by line
 	for i in range(0,len(tempLines)-1):
+		#if The line contains the word ATOM indicating it is an atom coordinate line 
+		if "ATOM" in tempLines[i]:
+			#if the line also contains 'CA' indicating that it is the alpha carbon
+				if "CA" in tempLines[i]:
+					#Stores the line in which the above conditions are met into the qurList
+					temList.append(tempLines[i])
 		print(tempLines[i])
 
-	#print(querLines)
-	#print(tempLines)
+	print("Number of alpha carbons in query: " + str(len(qurList)))
+	print("Number of alpha carbons in template: " + str(len(qurList)))
 
 aCarbonCoordMatrix("5gsm.pdb", "5gsl.pdb")
