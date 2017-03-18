@@ -40,24 +40,42 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 	#Iterates through the query file line by line
 	for i in range(0,len(querLines)-1):
 		#if The line contains the word ATOM indicating it is an atom coordinate line 
-		if "ATOM" in querLines[i]:
+		#print(querLines[i][:6])
+		if "ATOM" in querLines[i][:6]:
+			print("Found an atom line!")
 			#if the line also contains 'CA' indicating that it is the alpha carbon
-				if "CA" in querLines[i]:
-					#Stores the line in which the above conditions are met into the qurList
-					qurList.append(querLines[i])
-		print(querLines[i])
+			if "CA" in querLines[i][12:17]:
+				print("Found an alpha carbon line!")
+				#Stores the line in which the above conditions are met into the qurList
+				qurList.append(querLines[i])
+		#print(querLines[i])
 
 	#Iterates through the template file line by line
 	for i in range(0,len(tempLines)-1):
 		#if The line contains the word ATOM indicating it is an atom coordinate line 
-		if "ATOM" in tempLines[i]:
+		#if "ATOM" == tempLines[i].index(tempLines):
+		if "ATOM" in tempLines[i][:6]:
+			#print("Found an atom at line: "+ str(i))
 			#if the line also contains 'CA' indicating that it is the alpha carbon
-				if "CA" in tempLines[i]:
-					#Stores the line in which the above conditions are met into the qurList
-					temList.append(tempLines[i])
-		print(tempLines[i])
+			if "CA" in tempLines[i][12:17]:
+				#print("Found an alpha carbon at line: " + str(i))
+				#Stores the line in which the above conditions are met into the qurList
+				temList.append(tempLines[i])
+		#print(tempLines[i])
 
-	print("Number of alpha carbons in query: " + str(len(qurList)))
-	print("Number of alpha carbons in template: " + str(len(qurList)))
+	for i in range(0, len(qurList)-1):
+		print(qurList[i])
+
+	print("#############################################")
+	print("############# BREAK BREAK BREAK #############")
+	print("############# BREAK BREAK BREAK #############")
+	print("############# BREAK BREAK BREAK #############")
+	print("#############################################")
+
+	#for i in range(0, len(temList)-1):
+		#print(temList[i])
+
+	print("Number of alpha carbons found in query: " + str(len(qurList)))
+	print("Number of alpha carbons found in template: " + str(len(temList)))
 
 aCarbonCoordMatrix("5gsm.pdb", "5gsl.pdb")
