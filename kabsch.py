@@ -37,21 +37,26 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 	qurList = []
 	temList = []
 
+	#Distance variable created for more optimized iteration
+	dist = len(querLines)-1
 	#Iterates through the query file line by line
-	for i in range(0,len(querLines)-1):
+	for i in range(0,dist):
 		#if The line contains the word ATOM indicating it is an atom coordinate line 
 		#print(querLines[i][:6])
 		if "ATOM" in querLines[i][:6]:
-			print("Found an atom line!")
+			#print("Found an atom line!")
 			#if the line also contains 'CA' indicating that it is the alpha carbon
 			if "CA" in querLines[i][12:17]:
-				print("Found an alpha carbon line!")
+				#print("Found an alpha carbon line!")
 				#Stores the line in which the above conditions are met into the qurList
 				qurList.append(querLines[i])
 		#print(querLines[i])
 
+
+	#Distance variable created for more optimized iteration
+	dist = len(tempLines)-1
 	#Iterates through the template file line by line
-	for i in range(0,len(tempLines)-1):
+	for i in range(0,dist):
 		#if The line contains the word ATOM indicating it is an atom coordinate line 
 		#if "ATOM" == tempLines[i].index(tempLines):
 		if "ATOM" in tempLines[i][:6]:
@@ -63,17 +68,48 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 				temList.append(tempLines[i])
 		#print(tempLines[i])
 
-	for i in range(0, len(qurList)-1):
-		print(qurList[i])
+
+	#List of alpha carbon coordinates from the query protein
+	qCoords = []
+	#Distance variable created for more optimized iteration
+	dist = len(qurList)-1
+	#Iterate through alpha carbons in the qurList
+	for i in range(0, dist):
+		qCoords.append(qurList[i][31:55])
+
+	#List of alpha carbon coordinates from the template protein
+	tCoords = []
+	#Distance variable cread for more optimized iteration
+	dist = len(temList)-1
+	#Iterate through the alpha carbons in the temList
+	for i in range(0, dist):
+		tCoords.append(temList[i][31:55])
+
+	for i in range(0, len(qCoords)-1):
+		print(qCoords[i])
 
 	print("#############################################")
 	print("############# BREAK BREAK BREAK #############")
 	print("############# BREAK BREAK BREAK #############")
 	print("############# BREAK BREAK BREAK #############")
 	print("#############################################")
+
+	for i in range(0, len(tCoords)-1):
+		print(tCoords[i])
+
+	#Line for debugging
+	#for i in range(0, len(qurList)-1):
+	#	print(qurList[i])
+
+	
+
 
 	#for i in range(0, len(temList)-1):
 		#print(temList[i])
+
+	#iterates through each of the list stripping the x, y, and z values from each line
+	#for i in range(0, len(qurList)-1):
+		
 
 	print("Number of alpha carbons found in query: " + str(len(qurList)))
 	print("Number of alpha carbons found in template: " + str(len(temList)))
