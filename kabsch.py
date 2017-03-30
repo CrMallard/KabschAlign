@@ -96,6 +96,7 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 
 	for i in range(0, len(tCoords)-1):
 		print(tCoords[i])
+		print(len(tCoords[i]))
 
 	#Line for debugging
 	#for i in range(0, len(qurList)-1):
