@@ -85,8 +85,8 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 	for i in range(0, dist):
 		tCoords.append(temList[i][31:55])
 
-	for i in range(0, len(qCoords)-1):
-		print(qCoords[i])
+	#for i in range(0, len(qCoords)-1):
+	#	print(qCoords[i])
 
 	print("#############################################")
 	print("############# BREAK BREAK BREAK #############")
@@ -94,9 +94,9 @@ def aCarbonCoordMatrix(queryFile, templateFile):
 	print("############# BREAK BREAK BREAK #############")
 	print("#############################################")
 
-	for i in range(0, len(tCoords)-1):
-		print(tCoords[i])
-		print(len(tCoords[i]))
+	#for i in range(0, len(tCoords)-1):
+	#	print(tCoords[i])
+		#print(len(tCoords[i]))
 
 	#Line for debugging
 	#for i in range(0, len(qurList)-1):
